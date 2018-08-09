@@ -39,6 +39,15 @@ frontend/yarn-error.log
 # BUCK
 frontend/buck-out/
 \.buckd/
+frontend/android/local.properties
+frontend/android/build/
+frontend/android/app/libs/
+frontend/android/.gradle/
+frontend/android/app/build/
+frontend/android/app/gradle/
+frontend/android/app/gradlew
+frontend/android/app/gradlew.bat
+frontend/android/keystores/debug.keystore
 *.keystore
 
 # fastlane
