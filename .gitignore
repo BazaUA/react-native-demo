@@ -1,0 +1,83 @@
+# OSX
+#
+.DS_Store
+
+# Xcode
+#
+frontend/build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+frontend/xcuserdata
+*.xccheckout
+*.moved-aside
+frontend/DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+frontend/project.xcworkspace
+
+# Android/IntelliJ
+#
+frontend/build/
+frontend/.idea
+frontend/.gradle
+frontend/local.properties
+*.iml
+
+# node.js
+#
+frontend/node_modules/
+frontend/npm-debug.log
+frontend/yarn-error.log
+
+# BUCK
+frontend/buck-out/
+\.buckd/
+*.keystore
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
+
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+backend/build/
+backend/.idea
+backend/.gradle
+backend/local.properties
+backend/target/
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+backend/hs_err_pid*
