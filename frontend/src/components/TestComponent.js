@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
-import { itemsFetch } from '../actions';
 
 class TestComponent extends Component {
   componentWillMount() {
@@ -28,4 +27,3 @@ const mapStateToProps = (state) => {
   return { items: state.items };
 };
 
-export default connect(mapStateToProps, { itemsFetch })(TestComponent);
