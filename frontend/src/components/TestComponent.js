@@ -5,20 +5,10 @@ import { itemsFetch, createItem, deleteItem } from '../actions';
 
 class TestComponent extends Component {
   componentWillMount() {
-    this.props.itemsFetch();
-    this.props.deleteItem(3);
+
   }
 
-  // renderRow(item) {
-  //   return (
-  //     <View>
-  //       <Text>{item.id}</Text>
-  //     </View>
-  //   );
-  // }
-
   render() {
-    console.log(this.props);
     return (
       <Text>Hello</Text>
     );
