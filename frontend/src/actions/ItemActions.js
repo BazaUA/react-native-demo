@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Toast from 'react-native-simple-toast';
 import * as types from './types';
 
 const hostApi = 'https://react-native-demo-api.herokuapp.com/api';
@@ -52,9 +53,11 @@ export const createItem = ({ name, date, done }) => {
         response.json()
           .then((body) => {
             dispatch(createItemSuccess(body));
+            Toast.show('Created success!');
           });
       })
       .catch(error => {
+        Toast.show('Something went wrong!');
         throw (error);
       });
   };
@@ -71,8 +74,10 @@ export const deleteItem = (itemId) => {
     })
       .then(() => {
         dispatch(deleteItemSuccess(itemId));
+        Toast.show('Deleted success!');
       })
       .catch(error => {
+        Toast.show('Something went wrong!');
         throw (error);
       });
   };
@@ -91,6 +96,7 @@ export const doneItem = (itemId) => {
         dispatch(doneItemSuccess());
       })
       .catch(error => {
+        Toast.show('Something went wrong!');
         throw (error);
       });
   };
@@ -110,6 +116,7 @@ export const undoneItem = (itemId) => {
         dispatch(undoneItemSuccess());
       })
       .catch(error => {
+        Toast.show('Something went wrong!');
         throw (error);
       });
   };
