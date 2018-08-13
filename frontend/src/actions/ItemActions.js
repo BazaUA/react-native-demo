@@ -1,18 +1,18 @@
 import axios from 'axios';
 import * as types from './types';
 
-const host = 'https://react-native-demo-api.herokuapp.com/api';
+const hostApi = 'https://react-native-demo-api.herokuapp.com/api';
 
 const loadItemsSuccess = (items) => {
   return { type: types.ITEMS_FETCH_SUCCESS, payload: items };
 };
 
 const createItemSuccess = (item) => {
-  return { type: types.CREATE_ITEM_SUCCESS, payload: item }
+  return { type: types.CREATE_ITEM_SUCCESS, payload: item };
 };
 
-const deleteItemSuccess = () => {
-  return { type: types.DELETE_ITEM_SUCCESS };
+const deleteItemSuccess = (itemId) => {
+  return { type: types.DELETE_ITEM_SUCCESS, payload: itemId };
 };
 
 const doneItemSuccess = () => {
@@ -24,7 +24,7 @@ const undoneItemSuccess = () => {
 };
 
 export const itemsFetch = () => {
-  const url = `${host}/items`;
+  const url = `${hostApi}/items`;
   return (dispatch) => {
     axios.get(url)
       .then((items) => {
@@ -33,17 +33,16 @@ export const itemsFetch = () => {
       .catch((error) => {
         throw (error);
       });
-  }
+  };
 };
 
 export const createItem = ({ name, date, done }) => {
   return (dispatch) => {
-    const url = `${host}/item`;
+    const url = `${hostApi}/item`;
     fetch(url, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
-        'dataType': 'json'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         name, date, done
@@ -63,16 +62,14 @@ export const createItem = ({ name, date, done }) => {
 
 export const deleteItem = (itemId) => {
   return (dispatch) => {
-    const url = `${host}/item/${itemId}`;
+    const url = `${hostApi}/item/${itemId}`;
     fetch(url, {
       method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json',
-        'dataType': 'json'
+        'Content-Type': 'application/json'
       }
     })
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         dispatch(deleteItemSuccess(itemId));
       })
       .catch(error => {
@@ -81,45 +78,39 @@ export const deleteItem = (itemId) => {
   };
 };
 
-export function doneItem(itemId) {
+export const doneItem = (itemId) => {
   return (dispatch) => {
-    const url = `${host}/done/${itemId}`;
+    const url = `${hostApi}/done/${itemId}`;
     fetch(url, {
-      credentials: 'same-origin',
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'dataType': 'json'
+        'Content-Type': 'application/json'
       }
     })
-      .then(response => {
+      .then(() => {
         dispatch(doneItemSuccess());
-        toastr.success("Done successful");
       })
       .catch(error => {
-        toastr.error("Something went wrong!");
         throw (error);
       });
   };
-}
+};
 
 
 export const undoneItem = (itemId) => {
-  return  (dispatch) => {
-    const url = `${host}/undone/${itemId}`;
+  return (dispatch) => {
+    const url = `${hostApi}/undone/${itemId}`;
     fetch(url, {
-      credentials: 'same-origin',
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'dataType': 'json'
+        'Content-Type': 'application/json'
       }
     })
-      .then(response => {
+      .then(() => {
         dispatch(undoneItemSuccess());
       })
       .catch(error => {
         throw (error);
       });
   };
-}
+};
