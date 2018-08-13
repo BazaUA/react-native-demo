@@ -17,8 +17,7 @@ export const itemsFetch = () => {
       })
       .catch((error) => {
         console.log('new');
-        throw (error);
-        
+        throw (error); 
       });
   };
 };
