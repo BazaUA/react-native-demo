@@ -92,3 +92,4 @@ backend/target/
 backend/hs_err_pid*
 
 frontend/task
+frontend/android/gradle.properties
