@@ -5,8 +5,17 @@ class TodoInput extends Component {
     render() {
         return (
             <View style={styles.inputLayer} >
-                <TextInput style={styles.inputField} placeholder='What you need to do?' />
-                <TouchableOpacity style={styles.addButton} >
+                <TextInput
+                    style={styles.inputField}
+                    placeholder='What you need to do?'
+                    placeholderTextColor='#B0ADCD'
+                    underlineColorAndroid='transparent'
+                    tintColor='#fff'
+                    selectionColor='blue'
+                />
+                <TouchableOpacity
+                    style={styles.addButton}
+                >
                     <Text style={styles.buttonText} >Add</Text>
                 </TouchableOpacity>
             </View>
@@ -27,16 +36,20 @@ const styles = StyleSheet.create({
         height: 40,
         borderWidth: 1,
         borderColor: 'white',
-        // marginTop: 5,
+        justifyContent: 'center',
+        paddingTop: 0,
+        paddingBottom: 0,
+        paddingLeft: 15,
         color: '#fff',
-        fontSize: 18
+        fontSize: 20
         // height: 30
-        
+
     },
     addButton: {
         height: 40,
         width: 50,
-        backgroundColor: '#81c04d',
+        // backgroundColor: '#81c04d' '0a288a',
+        backgroundColor: '#0071f9',
         justifyContent: 'center',
         borderColor: '#fff',
         borderWidth: 1,

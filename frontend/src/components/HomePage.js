@@ -3,9 +3,8 @@ import { View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { itemsFetch } from '../actions';
 import TitleBar from './activeBar/TitleBar';
-import FilterButtons from './filterButtons/FilterButtons';
 import TodoList from './todoList/TodoList';
-
+import Visibility from './filterButtons/Visibility';
 
 class HomePage extends Component {
 
@@ -18,7 +17,7 @@ class HomePage extends Component {
     return (
       <View style={styles.container} >
         <TitleBar />
-        <FilterButtons />
+        <Visibility />
         <TodoList />
       </View>
     );
@@ -32,7 +31,7 @@ const mapStateToProps = (state) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0C024D'
+    backgroundColor: '#050020'
     // backgroundColor: '#0C024D', '#2B15B6, '#096AAA'
   },
 });
