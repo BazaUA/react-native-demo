@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     },
     inputField: {
         flex: 1,
-        height: 40,
-        borderWidth: 1,
+        height: 50,
+        borderWidth: 2,
         borderColor: 'white',
         justifyContent: 'center',
         paddingTop: 0,
@@ -46,18 +46,19 @@ const styles = StyleSheet.create({
 
     },
     addButton: {
-        height: 40,
-        width: 50,
+        height: 50,
+        width: 60,
         // backgroundColor: '#81c04d' '0a288a',
         backgroundColor: '#0071f9',
         justifyContent: 'center',
         borderColor: '#fff',
-        borderWidth: 1,
+        borderWidth: 2
         // marginTop: 20
     },
     buttonText: {
         color: '#fff',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize: 20
     }
 });
 

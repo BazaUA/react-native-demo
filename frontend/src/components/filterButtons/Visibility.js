@@ -40,11 +40,12 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        margin: 10
+        margin: 12
     },
     text: {
         color: '#fff',
         fontWeight: 'bold',
+        fontSize: 16,
         backgroundColor: 'transparent',
         margin: 5,
         marginRight: 20,

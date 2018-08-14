@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import TodoListItem from './TodoListItem';
 
 class TodoList extends Component {
+    // constructor() {
+    //     super();
+    // }
+
     render() {
+        const dataItems = this.props.items;
+        console.log(dataItems);
         return (
             <View style={styles.content} >
                 <FlatList
-                    data={[
-                        { note: 'First todo item' },
-                        { note: 'Second todo Item' },
-                        { note: 'Third todo Item' }
-                    ]}
-                    renderItem={({ item }) => <Text style={styles.noteStyle} >{item.note}</Text>}
+                    data={dataItems}
+                    renderItem={
+                        ({ item }) => <TodoListItem key={item.timestamp} item={item} />
+                    }
                 />
-                <TodoListItem />
             </View>
         );
     }
@@ -22,11 +25,15 @@ class TodoList extends Component {
 
 const styles = StyleSheet.create({
     content: {
-        flex: 1
+        flex: 1,
+        alignItems: 'center'
     },
     noteStyle: {
         height: 50,
         color: 'white'
+    },
+    list: {
+        alignItems: 'center'
     }
 });
 
