@@ -9,13 +9,19 @@ class TodoList extends Component {
 
     render() {
         const dataItems = this.props.items;
-        console.log(dataItems);
+        const { doneItem, undoneItem, deleteItem } = this.props;
         return (
             <View style={styles.content} >
                 <FlatList
                     data={dataItems}
                     renderItem={
-                        ({ item }) => <TodoListItem key={item.timestamp} item={item} />
+                        ({ item }) => <TodoListItem
+                                        key={item.id} 
+                                        item={item} 
+                                        deleteItem={deleteItem} 
+                                        doneItem={doneItem} 
+                                        undoneItem={undoneItem}  
+                        />
                     }
                 />
             </View>

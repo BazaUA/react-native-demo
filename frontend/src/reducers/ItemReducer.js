@@ -3,7 +3,6 @@ import * as types from '../actions/types';
 const INIT_STATE = [];
 
 export default (state = INIT_STATE, action) => {
-  console.log(action.type);
   switch (action.type) {
     case types.ITEMS_FETCH_SUCCESS:
       return action.payload;

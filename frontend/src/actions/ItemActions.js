@@ -21,7 +21,7 @@ const doneItemSuccess = () => {
 };
 
 const undoneItemSuccess = () => {
-  return { type: types.SET_ITEM_DONE_SUCCESS };
+  return { type: types.SET_ITEM_UNDONE_SUCCESS };
 };
 
 export const itemsFetch = () => {
@@ -37,7 +37,7 @@ export const itemsFetch = () => {
   };
 };
 
-export const createItem = ({ name, date, done }) => {
+export const createItem = ({ value, date, done }) => {
   return (dispatch) => {
     const url = `${hostApi}/item`;
     fetch(url, {
@@ -46,7 +46,7 @@ export const createItem = ({ name, date, done }) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name, date, done
+        value, date, done
       })
     })
       .then((response) => {
@@ -121,3 +121,11 @@ export const undoneItem = (itemId) => {
       });
   };
 };
+
+export const inputUpdate = (value) => {
+  return {
+    type: types.INPUT_UPDATE,
+    payload: value
+  };
+};
+

@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
+import { inputUpdate, createItem } from '../../actions';
 
 class TodoInput extends Component {
+  onClickAdd = () => {
+    const value = this.props.inputValue;
+    const date = new Date().getTime();
+    this.props.createItem({ value, date, done: false });
+  }
     render() {
         return (
             <View style={styles.inputLayer} >
@@ -12,9 +19,12 @@ class TodoInput extends Component {
                     underlineColorAndroid='transparent'
                     tintColor='#fff'
                     selectionColor='blue'
+                    value={this.props.inputValue}
+                    onChangeText={(value) => { this.props.inputUpdate(value); }}
                 />
                 <TouchableOpacity
                     style={styles.addButton}
+                    onPress={this.onClickAdd}
                 >
                     <Text style={styles.buttonText} >Add</Text>
                 </TouchableOpacity>
@@ -62,4 +72,8 @@ const styles = StyleSheet.create({
     }
 });
 
-export default TodoInput;
+const mapStateToProps = (state) => {
+  return { inputValue: state.input.inputValue };
+};
+
+export default connect(mapStateToProps, { inputUpdate, createItem })(TodoInput);

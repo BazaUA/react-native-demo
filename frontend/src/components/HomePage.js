@@ -1,78 +1,53 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import { itemsFetch } from '../actions';
+import { itemsFetch, createItem, deleteItem, doneItem, undoneItem } from '../actions';
 import TitleBar from './activeBar/TitleBar';
 import TodoList from './todoList/TodoList';
 import Visibility from './filterButtons/Visibility';
-
-const todoItems = [
-  {
-    name: 'To do todo\'s design and something elseses or not',
-    timestamp: '1529803020000',
-    completed: false,
-  },
-  {
-    name: 'Selebrate YouthDay',
-    timestamp: '1529803024000',
-    completed: false,
-  },
-  {
-    name: 'Get some sleep [Real life]',
-    timestamp: 1529803028000,
-    completed: true,
-  }
-];
 
 class HomePage extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      items: []
-    };
     this.deleteItem = this.deleteItem.bind(this);
-    this.addItems = this.addItems.bind(this);
+    this.undoneItem = this.undoneItem.bind(this);
+    this.doneItem = this.doneItem.bind(this);
   }
 
   componentWillMount() {
     this.props.itemsFetch();
   }
 
-  componentDidMount() {
-    this.setState({ items: todoItems });
+  deleteItem(itemId) {
+    this.props.deleteItem(itemId);
   }
 
-  deleteItem(index) {
-    const items = this.state.items;
-
-    items.splice(index, 1);
-    this.setState({ items });
+  doneItem(itemId) {
+    this.props.doneItem(itemId);
   }
 
-  addItems(item) {
-    if (item) {
-      const items = this.state.items;
-      items.push(item);
-      this.setState({ items });
-    }
+  undoneItem(itemId) {
+    this.props.undoneItem(itemId);
   }
+
 
   render() {
-    console.log(this.props);
     return (
       <View style={styles.container} >
-        <TitleBar />
+        <TitleBar inputValue />
         <Visibility />
-        <TodoList delete={this.deleteItem} items={this.state.items} />
+        <TodoList
+          deleteItem={this.deleteItem}
+          items={this.props.items}
+          doneItem={this.doneItem}
+          undoneItem={this.undoneItem}
+        />
       </View>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return { items: state.items };
-};
 
 const styles = StyleSheet.create({
   container: {
@@ -82,4 +57,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(mapStateToProps, { itemsFetch })(HomePage);
+const mapStateToProps = (state) => {
+  return { items: state.items, inputValue: state.input.inputValue };
+};
+
+
+export default connect(mapStateToProps, {
+  itemsFetch, createItem, deleteItem, doneItem, undoneItem
+})(HomePage);
