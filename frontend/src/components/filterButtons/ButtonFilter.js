@@ -3,6 +3,7 @@ import { TouchableOpacity, Text } from 'react-native';
 
 const ButtonFilter = props => {
     const {
+        actions,
         filter,
         children,
         txtStyle,
@@ -13,14 +14,15 @@ const ButtonFilter = props => {
     } = props;
 
     const activeOrNot = (filter === visibilityFilter) ? activeStyle : unactiveStyle;
-    // const _onPress = () => actions.setVisibilityFilter(filter);
+    const oonPress = () => actions.setVisibilityFilter(filter);
 
     return (
         <TouchableOpacity
-            activeOpacity={activeOpacity}
-            style={activeOrNot} //onPress={_onPress}
+            activeOpacity={activeOpacity} style={activeOrNot} onPress={oonPress}
         >
-            <Text style={txtStyle}>{children}</Text>
+            <Text style={txtStyle}>
+                {children}
+            </Text>
         </TouchableOpacity>
     );
 };

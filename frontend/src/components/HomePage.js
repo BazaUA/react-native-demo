@@ -58,7 +58,11 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-  return { items: state.items, inputValue: state.input.inputValue };
+  return {
+    items: state.items,
+    inputValue: state.input.inputValue,
+    visibilityFilter: state.visibilityFilter
+  };
 };
 
 
