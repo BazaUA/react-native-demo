@@ -30,7 +30,6 @@ class TodoListItem extends Component {
 
   render() {
     const item = this.state.item;
-    console.log(item);
     const time = new Date(item.date).toDateString();
     const isCompleted = this.state.isCompleted;
     return (
