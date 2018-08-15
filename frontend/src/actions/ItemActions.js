@@ -128,4 +128,3 @@ export const inputUpdate = (value) => {
     payload: value
   };
 };
-
