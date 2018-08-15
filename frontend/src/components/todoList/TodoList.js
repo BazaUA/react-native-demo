@@ -23,6 +23,7 @@ class TodoList extends Component {
                                         undoneItem={undoneItem}  
                         />
                     }
+                    keyExtractor={(item) => item.id.toString()}
                 />
             </View>
         );
