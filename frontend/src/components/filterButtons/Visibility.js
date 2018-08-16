@@ -1,46 +1,52 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import ButtonFilter from './ButtonFilter';
 
-const Visibility = props => {
-    const {
-        items,
-        actions,
-        visibilityFilter
-    } = props;
-
-    return (
-        <View style={styles.container}>
-            <ButtonFilter
-                filter='SHOW_ALL'
-                txtStyle={styles.text}
-                activeStyle={styles.btnClicked}
-                unactiveStyle={styles.btnUnclicked}
-                activeOpacity={0.7}
-                {...props}
-            >Show All
+class Visibility extends Component {
+    // const Visibility = props => {
+    // const {
+    //     items,
+    //     actions,
+    //     visibilityFilter
+    // } = props;
+    // console.log(visibilityFilter);
+    render() {
+        // const {
+            
+        // } = this.props;
+        return (
+            <View style={styles.container}>
+                <ButtonFilter
+                    filter='SHOW_ALL'
+                    txtStyle={styles.text}
+                    activeStyle={styles.btnClicked}
+                    unactiveStyle={styles.btnUnclicked}
+                    activeOpacity={0.7}
+                    {...this.props}
+                >Show All
                 </ButtonFilter>
-            <ButtonFilter
-                filter='SHOW_ACTIVE'
-                txtStyle={styles.text}
-                activeStyle={styles.btnClicked}
-                unactiveStyle={styles.btnUnclicked}
-                activeOpacity={0.7}
-                {...props}
-            >Active
+                <ButtonFilter
+                    filter='SHOW_ACTIVE'
+                    txtStyle={styles.text}
+                    activeStyle={styles.btnClicked}
+                    unactiveStyle={styles.btnUnclicked}
+                    activeOpacity={0.7}
+                    {...this.props}
+                >Active
                 </ButtonFilter>
-            <ButtonFilter
-                filter='SHOW_COMPLETED'
-                txtStyle={styles.text}
-                activeStyle={styles.btnClicked}
-                unactiveStyle={styles.btnUnclicked}
-                activeOpacity={0.7}
-                {...props}
-            >Comlpeted
+                <ButtonFilter
+                    filter='SHOW_COMPLETED'
+                    txtStyle={styles.text}
+                    activeStyle={styles.btnClicked}
+                    unactiveStyle={styles.btnUnclicked}
+                    activeOpacity={0.7}
+                    {...this.props}
+                >Comlpeted
                 </ButtonFilter>
-        </View>
-    );
-};
+            </View>
+        );
+    }
+}
 
 
 const styles = StyleSheet.create({

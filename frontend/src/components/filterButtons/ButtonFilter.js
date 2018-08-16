@@ -3,18 +3,22 @@ import { TouchableOpacity, Text } from 'react-native';
 
 const ButtonFilter = props => {
     const {
-        actions,
         filter,
         children,
         txtStyle,
         activeOpacity,
         visibilityFilter,
         activeStyle,
-        unactiveStyle
+        unactiveStyle,
+        setVisibilityFilter
     } = props;
 
-    const activeOrNot = (filter === visibilityFilter) ? activeStyle : unactiveStyle;
-    const oonPress = () => actions.setVisibilityFilter(filter);
+    // console.log(visibilityFilter);
+    const activeOrNot = (props.filter === visibilityFilter) ? activeStyle : unactiveStyle;
+    const oonPress = () => {
+        console.log(filter, ' here');
+        setVisibilityFilter(filter);
+    };
 
     return (
         <TouchableOpacity

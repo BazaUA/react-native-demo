@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import { itemsFetch, createItem, deleteItem, doneItem, undoneItem } from '../actions';
+import {
+  itemsFetch,
+  createItem,
+  deleteItem,
+  doneItem,
+  undoneItem,
+  setVisibilityFilter
+} from '../actions';
 import TitleBar from './activeBar/TitleBar';
-import TodoList from './todoList/TodoList';
+import TodoListView from './todoList/TodoListView';
 import Visibility from './filterButtons/Visibility';
 
 class HomePage extends Component {
@@ -13,14 +20,15 @@ class HomePage extends Component {
     this.deleteItem = this.deleteItem.bind(this);
     this.undoneItem = this.undoneItem.bind(this);
     this.doneItem = this.doneItem.bind(this);
+    this.setVisibilityFilter = this.setVisibilityFilter.bind(this);
   }
 
   componentWillMount() {
     this.props.itemsFetch();
   }
 
-  deleteItem(itemId) {
-    this.props.deleteItem(itemId);
+  setVisibilityFilter(filter) {
+    this.props.setVisibilityFilter(filter);
   }
 
   doneItem(itemId) {
@@ -31,17 +39,27 @@ class HomePage extends Component {
     this.props.undoneItem(itemId);
   }
 
+  deleteItem(itemId) {
+    this.props.deleteItem(itemId);
+  }
 
   render() {
     return (
       <View style={styles.container} >
-        <TitleBar inputValue />
-        <Visibility />
-        <TodoList
+        <TitleBar
+          inputValue
+          visibilityFilter={this.props.visibilityFilter}
+        />
+        <Visibility
+          setVisibilityFilter={this.setVisibilityFilter}
+          visibilityFilter={this.props.visibilityFilter}
+        />
+        <TodoListView
           deleteItem={this.deleteItem}
           items={this.props.items}
           doneItem={this.doneItem}
           undoneItem={this.undoneItem}
+          visibilityFilter={this.props.visibilityFilter}
         />
       </View>
     );
@@ -65,7 +83,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-
 export default connect(mapStateToProps, {
-  itemsFetch, createItem, deleteItem, doneItem, undoneItem
+  itemsFetch, createItem, deleteItem, doneItem, undoneItem, setVisibilityFilter
 })(HomePage);

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import ItemReducer from './ItemReducer';
 import InputReducer from './InputReducer';
-import visibilityFilter from './VisibilityFilterReducer';
+import VisibilityFilterReducer from './VisibilityFilterReducer';
 
 export default combineReducers({
   items: ItemReducer,
   input: InputReducer,
-  visibilityFilter
+  visibilityFilter: VisibilityFilterReducer
 });

@@ -4,7 +4,7 @@ export default function VisibilityFilterReducer(state = 'SHOW_ALL', action) {
   switch (action.type) {
 
     case types.SET_VISIBILITY_FILTER:
-      return action.filter;
+      return action.payload;
 
     default:
       return state;

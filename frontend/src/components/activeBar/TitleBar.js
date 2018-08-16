@@ -5,10 +5,24 @@ import TodoInput from '../todoInput/TodoInput';
 class TitleBar extends Component {
 
     render() {
+        const { visibilityFilter } = this.props;
+        const getFilterName = (whatFilter) => {
+            switch (whatFilter) {
+                case 'SHOW_ALL':
+                    return 'ALL';
+                case 'SHOW_COMPLETED':
+                    return 'COMPLETED';
+                case 'SHOW_ACTIVE':
+                    return 'ACTIVE';
+                default:
+                    return 'MY';
+            }
+        };
+
         return (
             <View style={styles.tools}>
                 <View style={styles.bar} >
-                    <Text style={styles.title} >[filter] TODOs</Text>
+                    <Text style={styles.title} >{getFilterName(visibilityFilter)} TODOs</Text>
                 </View>
                 <TodoInput />
 
