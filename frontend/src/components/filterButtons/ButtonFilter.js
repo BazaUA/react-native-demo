@@ -13,10 +13,8 @@ const ButtonFilter = props => {
         setVisibilityFilter
     } = props;
 
-    // console.log(visibilityFilter);
     const activeOrNot = (props.filter === visibilityFilter) ? activeStyle : unactiveStyle;
     const oonPress = () => {
-        console.log(filter, ' here');
         setVisibilityFilter(filter);
     };
 

@@ -3,17 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import ButtonFilter from './ButtonFilter';
 
 class Visibility extends Component {
-    // const Visibility = props => {
-    // const {
-    //     items,
-    //     actions,
-    //     visibilityFilter
-    // } = props;
-    // console.log(visibilityFilter);
     render() {
-        // const {
-            
-        // } = this.props;
         return (
             <View style={styles.container}>
                 <ButtonFilter

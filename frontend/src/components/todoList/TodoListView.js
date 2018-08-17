@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import TodoListItem from './TodoListItem';
-import List from './List';
 
 class TodoListView extends Component {
 
@@ -23,11 +22,11 @@ class TodoListView extends Component {
                     return allTodos;
                 case 'SHOW_COMPLETED':
                     return allTodos.filter(
-                        t => t.done
+                        item => item.done
                     );
                 case 'SHOW_ACTIVE':
                     return allTodos.filter(
-                        t => !t.done
+                      item => !item.done
                     );
                 default:
                     return allTodos;
@@ -41,34 +40,21 @@ class TodoListView extends Component {
 
         return (
             <View style={styles.content} >
-                <List
-                    visibleTodos={visibleTodos}
-                    deleteItem={deleteItem}
-                    items={this.props.items}
-                    doneItem={doneItem}
-                    undoneItem={undoneItem}
-                    {...this.props}
+                <FlatList
+                    data={visibleTodos}
+                    renderItem={
+                        ({ item }) => <TodoListItem
+                            key={item.id}
+                            item={item}
+                            deleteItem={deleteItem}
+                            doneItem={doneItem}
+                            undoneItem={undoneItem}
+                        />
+                    }
+                    keyExtractor={(item) => item.id.toString()}
                 />
             </View>
         );
-
-        // return (
-        //     <View style={styles.content} >
-        //         <FlatList
-        //             data={visibleTodos}
-        //             renderItem={
-        //                 ({ item }) => <TodoListItem
-        //                     key={item.id}
-        //                     item={item}
-        //                     deleteItem={deleteItem}
-        //                     doneItem={doneItem}
-        //                     undoneItem={undoneItem}
-        //                 />
-        //             }
-        //             keyExtractor={(item) => item.id.toString()}
-        //         />
-        //     </View>
-        // );
     }
 }
 

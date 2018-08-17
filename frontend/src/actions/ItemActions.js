@@ -16,12 +16,12 @@ const deleteItemSuccess = (itemId) => {
   return { type: types.DELETE_ITEM_SUCCESS, payload: itemId };
 };
 
-const doneItemSuccess = () => {
-  return { type: types.SET_ITEM_DONE_SUCCESS };
+const doneItemSuccess = (itemId) => {
+  return { type: types.SET_ITEM_DONE_SUCCESS, payload: itemId };
 };
 
-const undoneItemSuccess = () => {
-  return { type: types.SET_ITEM_UNDONE_SUCCESS };
+const undoneItemSuccess = (itemId) => {
+  return { type: types.SET_ITEM_UNDONE_SUCCESS, payload: itemId };
 };
 
 export const itemsFetch = () => {
@@ -93,7 +93,7 @@ export const doneItem = (itemId) => {
       }
     })
       .then(() => {
-        dispatch(doneItemSuccess());
+        dispatch(doneItemSuccess(itemId));
       })
       .catch(error => {
         Toast.show('Something went wrong!');
@@ -113,7 +113,7 @@ export const undoneItem = (itemId) => {
       }
     })
       .then(() => {
-        dispatch(undoneItemSuccess());
+        dispatch(undoneItemSuccess(itemId));
       })
       .catch(error => {
         Toast.show('Something went wrong!');

@@ -14,18 +14,14 @@ class TodoListItem extends Component {
 
 
   toggleItem = () => {
-    const { item } = this.props;
-    const { doneItem, undoneItem } = this.props;
-    if (this.state.isCompleted) {
+    const { item, doneItem, undoneItem } = this.props;
+    const isDone = this.state.isCompleted;
+    if (isDone) {
       undoneItem(item.id);
     } else {
       doneItem(item.id);
     }
-    this.setState(prevState => {
-      return {
-        isCompleted: !prevState.isCompleted
-      };
-    });
+    this.setState({ isCompleted: !isDone });
   }
 
   render() {
