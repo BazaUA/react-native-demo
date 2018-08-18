@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { Scene, Router } from 'react-native-router-flux';
 import HomePage from './components/HomePage';
 
@@ -12,8 +11,6 @@ const RouterComponent = () => {
             key="homePage"
             component={HomePage}
             title="My TODO list"
-            // navigationBarStyle={styles.navBar}
-            // titleStyle={{ alignSelf: 'center' }}
             initial
           />
         </Scene>
@@ -23,9 +20,6 @@ const RouterComponent = () => {
 };
 
 const styles = {
-  navBar: {
-    backgroundColor: 'grey',
-  },
   titleStyle: {
     color: 'red',
     fontWeight: 'bold',

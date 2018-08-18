@@ -7,7 +7,6 @@ class TodoListView extends Component {
     render() {
         const {
             items,
-            // actions,
             visibilityFilter,
             doneItem, 
             undoneItem, 
